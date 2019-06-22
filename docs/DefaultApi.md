@@ -1,6 +1,6 @@
 # pybloodsclient.DefaultApi
 
-All URIs are relative to *http://127.0.0.1:5000/api/v1*
+All URIs are relative to *http://192.168.1.72:8081/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -11,8 +11,10 @@ Method | HTTP request | Description
 [**providers_get**](DefaultApi.md#providers_get) | **GET** /providers | Return a list of all available healthcare providers
 [**samples_get**](DefaultApi.md#samples_get) | **GET** /samples | Return a list of all available samples
 [**sources_get**](DefaultApi.md#sources_get) | **GET** /sources | Return a list of all available sources
+[**unit_id_get**](DefaultApi.md#unit_id_get) | **GET** /unit/{id} | Return a unit
 [**units_get**](DefaultApi.md#units_get) | **GET** /units | Return a list of all available units
 [**units_post**](DefaultApi.md#units_post) | **POST** /units | Create a new unit
+
 
 # **note_group_id_get**
 > InlineResponse200 note_group_id_get(id)
@@ -20,6 +22,7 @@ Method | HTTP request | Description
 Return a list of notes
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -58,6 +61,11 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A collection of notes |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **note_groups_get**
@@ -66,6 +74,7 @@ No authorization required
 Return a list of all available note groups
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -100,6 +109,11 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A collection of collection of notes |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **observations_get**
@@ -108,6 +122,7 @@ No authorization required
 Return a list of all observations
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -142,14 +157,20 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful listing of all observations |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **observations_post**
-> Observation observations_post(body)
+> Observation observations_post(new_observation)
 
 Create a new observation
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -159,11 +180,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = pybloodsclient.DefaultApi()
-body = pybloodsclient.NewObservation() # NewObservation | A new Observation
+new_observation = pybloodsclient.NewObservation() # NewObservation | A new Observation
 
 try:
     # Create a new observation
-    api_response = api_instance.observations_post(body)
+    api_response = api_instance.observations_post(new_observation)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->observations_post: %s\n" % e)
@@ -173,7 +194,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewObservation**](NewObservation.md)| A new Observation | 
+ **new_observation** | [**NewObservation**](NewObservation.md)| A new Observation | 
 
 ### Return type
 
@@ -188,6 +209,11 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A successful creation of an observation |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **providers_get**
@@ -196,6 +222,7 @@ No authorization required
 Return a list of all available healthcare providers
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -230,6 +257,11 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A collection of healthcare providers |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **samples_get**
@@ -238,6 +270,7 @@ No authorization required
 Return a list of all available samples
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -272,6 +305,11 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A collection of all bloods reports. This is usually a group of one or more results (eg, blood chemistry, endocrinology, etc) takes from a single vial of blood.  |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **sources_get**
@@ -280,6 +318,7 @@ No authorization required
 Return a list of all available sources
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -314,6 +353,63 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A collection of laboratories and their healthcare providers. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unit_id_get**
+> InlineResponse200 unit_id_get(id)
+
+Return a unit
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import pybloodsclient
+from pybloodsclient.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = pybloodsclient.DefaultApi()
+id = 56 # int | Numeric ID of the Unit
+
+try:
+    # Return a unit
+    api_response = api_instance.unit_id_get(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->unit_id_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Numeric ID of the Unit | 
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A collection of notes |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **units_get**
@@ -322,6 +418,7 @@ No authorization required
 Return a list of all available units
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -360,14 +457,20 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A successful listing of all units |  -  |
+
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **units_post**
-> Unit units_post(body)
+> Unit units_post(new_unit)
 
 Create a new unit
 
 ### Example
+
 ```python
 from __future__ import print_function
 import time
@@ -377,11 +480,11 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = pybloodsclient.DefaultApi()
-body = pybloodsclient.NewUnit() # NewUnit | A new Unit
+new_unit = pybloodsclient.NewUnit() # NewUnit | A new Unit
 
 try:
     # Create a new unit
-    api_response = api_instance.units_post(body)
+    api_response = api_instance.units_post(new_unit)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->units_post: %s\n" % e)
@@ -391,7 +494,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**NewUnit**](NewUnit.md)| A new Unit | 
+ **new_unit** | [**NewUnit**](NewUnit.md)| A new Unit | 
 
 ### Return type
 
@@ -405,6 +508,11 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | A successful creation of a unit |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
